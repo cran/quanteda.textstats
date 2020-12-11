@@ -1,5 +1,5 @@
 Package: quanteda.textstats
-Version: 0.90
+Version: 0.91
 Title: Textual Statistics for the Quantitative Analysis of Textual Data
 Description: Textual statistics functions formerly in the 'quanteda' package.
     Textual statistics for characterizing and comparing textual data. Includes 
@@ -31,7 +31,7 @@ Language: en-GB
 RoxygenNote: 7.1.1
 SystemRequirements: C++11
 NeedsCompilation: yes
-Packaged: 2020-12-03 21:14:51 UTC; kbenoit
+Packaged: 2020-12-11 11:06:51 UTC; kbenoit
 Author: Kenneth Benoit [cre, aut, cph]
     (<https://orcid.org/0000-0002-0797-564X>),
   Kohei Watanabe [aut] (<https://orcid.org/0000-0001-6519-5265>),
@@ -41,4 +41,4 @@ Author: Kenneth Benoit [cre, aut, cph]
   European Research Council [fnd] (ERC-2011-StG 283794-QUANTESS)
 Maintainer: Kenneth Benoit <kbenoit@lse.ac.uk>
 Repository: CRAN
-Date/Publication: 2020-12-07 09:40:02 UTC
+Date/Publication: 2020-12-11 12:10:05 UTC
