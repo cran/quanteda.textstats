@@ -91,6 +91,7 @@ Pädagogische
 QUANTESS
 RGL
 Rtools
+Rvd
 SRM
 Sachtextformeln
 Schreiben
@@ -121,7 +122,6 @@ Zeitschrift
 Zusammenhang
 anderen
 angewandte
-chisq
 codecov
 cruft
 des
@@ -146,7 +146,6 @@ regex
 rix
 sents
 simil
-stat
 sy
 textstat
 textstats

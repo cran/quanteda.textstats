@@ -205,7 +205,7 @@ textstat_simil.dfm <- function(x, y = NULL, selection = NULL,
 
     if (!is.null(selection))
         .Deprecated(msg = "'selection' is deprecated. Use 'y' instead.")
-    unused_dots(...)
+    check_dots(...)
 
     x <- as.dfm(x)
     margin <- match.arg(margin)
@@ -322,7 +322,7 @@ textstat_dist.dfm <- function(x, y = NULL, selection = NULL,
     if (!is.null(selection))
         .Deprecated(msg = "'selection' is deprecated. Use 'y' instead.")
 
-    unused_dots(...)
+    check_dots(...)
     x <- as.dfm(x)
 
     margin <- match.arg(margin)
@@ -429,6 +429,7 @@ as.list.textstat_proxy <- function(x, sorted = TRUE, n = NULL, diag = FALSE, ...
 #' @return `as.data.frame` for a `textstat_simil` or
 #'   `textstat_dist` object returns a data.frame of pairwise combinations
 #'   and the and their similarity or distance value.
+#' @importFrom stringi stri_sub
 #' @export
 as.data.frame.textstat_proxy <- function(x, row.names = NULL, optional = FALSE,
                                          diag = FALSE, upper = FALSE,  ...) {
@@ -450,7 +451,7 @@ as.data.frame.textstat_proxy <- function(x, row.names = NULL, optional = FALSE,
     result <- subset(result, !is.na(stat))
 
     # replace x and y with margin names
-    names(result)[1:2] <- paste0(stringi::stri_sub(margin, 1, -2), 1:2)
+    names(result)[1:2] <- paste0(stri_sub(margin, 1, -2), 1:2)
     # replace stat with measure name
     names(result)[3] <- method
     # drop row names
@@ -605,6 +606,8 @@ make_na_matrix <- function(dims, row = NULL, col = NULL) {
     }
     Matrix::sparseMatrix(
         i = i, j = j, x = as.double(NA),
-        dims = dims, giveCsparse = FALSE
+        dims = dims,
+        giveCsparse = FALSE
+        # repr = "T"
     )
 }
