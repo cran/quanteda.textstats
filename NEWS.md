@@ -1,3 +1,8 @@
+# quanteda.textstats 0.93
+
+* Minor changes to ensure compatibility with **quanteda** v3.
+* Changes to avoid breaking tests on older releases, caused by changes to the default for `stringsAsFactors` in `data.frame()`.
+
 # quanteda.textstats 0.92
 
 * Removed **data.table** dependency (#5).
