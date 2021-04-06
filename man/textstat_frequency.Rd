@@ -18,11 +18,10 @@ textstat_frequency(
 \item{n}{(optional) integer specifying the top \code{n} features to be returned,
 within group if \code{groups} is specified}
 
-\item{groups}{either: a character vector containing the names of document
-variables to be used for grouping; or a factor or object that can be
-coerced into a factor equal in length or rows to the number of documents.
-\code{NA} values of the grouping value are dropped.
-See \link[quanteda]{groups} for details.}
+\item{groups}{grouping variable for sampling, equal in length to the number
+of documents. This will be evaluated in the docvars data.frame, so that
+docvars may be referred to by name without quoting. This also changes
+previous behaviours for \code{groups}. See \code{news(Version >= "3.0", package = "quanteda")} for details.}
 
 \item{ties_method}{character string specifying how ties are treated.  See
 \code{\link[base:rank]{base::rank()}} for details.  Unlike that function, however, the default is
@@ -67,10 +66,17 @@ textstat_frequency(dfmat1, groups = c("one", "two", "one"), ties_method = "avera
 
 dfmat2 <- corpus_subset(data_corpus_inaugural, President == "Obama") \%>\%
    tokens(remove_punct = TRUE) \%>\%
-   tokens_remove(stopwords("english")) \%>\%
+   tokens_remove(stopwords("en")) \%>\%
    dfm()
 tstat1 <- textstat_frequency(dfmat2)
 head(tstat1, 10)
+
+dfmat3 <- head(data_corpus_inaugural) \%>\%
+   tokens(remove_punct = TRUE) \%>\%
+   tokens_remove(stopwords("en")) \%>\%
+   dfm()
+textstat_frequency(dfmat3, n = 2, groups = President)
+
 
 \dontrun{
 # plot 20 most frequent words
@@ -83,12 +89,14 @@ ggplot(tstat1[1:20, ], aes(x = reorder(feature, frequency), y = frequency)) +
 # plot relative frequencies by group
 dfmat3 <- data_corpus_inaugural \%>\%
     corpus_subset(Year > 2000) \%>\%
-    dfm(remove = stopwords("english"), remove_punct = TRUE) \%>\%
-    dfm_group(groups = "President") \%>\%
+    tokens(remove_punct = TRUE) \%>\%
+    tokens_remove(stopwords("en")) \%>\%
+    dfm() \%>\%
+    dfm_group(groups = President) \%>\%
     dfm_weight(scheme = "prop")
 
 # calculate relative frequency by president
-tstat2 <- textstat_frequency(dfmat3, n = 10, groups = "President")
+tstat2 <- textstat_frequency(dfmat3, n = 10, groups = President)
 
 # plot frequencies
 ggplot(data = tstat2, aes(x = factor(nrow(tstat2):1), y = frequency)) +
