@@ -603,6 +603,7 @@ setMethod("as.matrix", "textstat_simil_symm_sparse",
 #' @param min_proxy the minimum proximity value to be recoded.
 #' @param rank an integer value specifying top-n most proximity values to be
 #'   recorded.
+#' @import proxyC
 #' @export
 #' @seealso [textstat_dist()], [textstat_simil()]
 textstat_proxy <- function(x, y = NULL,
@@ -635,25 +636,25 @@ textstat_proxy <- function(x, y = NULL,
     if (method %in% c("cosine", "correlation", "jaccard", "ejaccard", "dice", "edice",
                       "hamman", "simple matching", "faith")) {
         if (identical(x, y)) {
-            result <- proxyC::simil(x, NULL, 2, method, min_simil = min_proxy, rank = rank)
+            result <- simil(x, NULL, 2, method, min_simil = min_proxy, rank = rank)
         } else {
-            result <- proxyC::simil(x, y, 2, method, min_simil = min_proxy, rank = rank)
+            result <- simil(x, y, 2, method, min_simil = min_proxy, rank = rank)
         }
     } else {
         if (identical(x, y)) {
-            result <- proxyC::dist(x, NULL, 2, method, p = p)
+            result <- dist(x, NULL, 2, method, p = p)
         } else {
-            result <- proxyC::dist(x, y, 2, method, p = p)
+            result <- dist(x, y, 2, method, p = p)
         }
     }
     dimnames(result) <- list(colnames(x), colnames(y))
     if (use_na) {
         if (method == "correlation") {
-            na1 <- proxyC::colSds(x) == 0
-            na2 <- proxyC::colSds(y) == 0
+            na1 <- colSds(x) == 0
+            na2 <- colSds(y) == 0
         } else {
-            na1 <- proxyC::colZeros(x) == nrow(x)
-            na2 <- proxyC::colZeros(y) == nrow(y)
+            na1 <- colZeros(x) == nrow(x)
+            na2 <- colZeros(y) == nrow(y)
         }
         if (any(na1) || any(na2))
             result <- result + make_na_matrix(dim(result), which(na1), which(na2))
