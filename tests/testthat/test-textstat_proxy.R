@@ -107,10 +107,15 @@ test_that("test textstat_proxy simple matching similarity", {
     test_simil(test_mt, "simple matching", "features")
 })
 
-test_that("test textstat_proxy hamman similarity", {
+test_that("test textstat_proxy hamann similarity", {
     skip_if_not_installed("proxy")
     test_simil(test_mt, "hamman", "documents")
     test_simil(test_mt, "hamman", "features")
+
+    expect_identical(
+        textstat_simil(test_mt, method = "hamman"),
+        textstat_simil(test_mt, method = "hamann")
+    )
 })
 
 
@@ -312,14 +317,14 @@ test_that("use_na is working", {
     euc1 <- textstat_proxy(mt, margin = "features", method = "euclidean", use_na = TRUE)
     expect_equal(sum(is.na(cos1)), 5)
     expect_equal(sum(is.na(cor1)), 8)
-    expect_equal(sum(is.na(euc1)), 5)
+    expect_equal(sum(is.na(euc1)), 0)
 
     cos2 <- textstat_proxy(mt, mt[, 3], margin = "features", method = "cosine", use_na = TRUE)
     cor2 <- textstat_proxy(mt, mt[, 3], margin = "features", method = "correlation", use_na = TRUE)
     euc2 <- textstat_proxy(mt, mt[, 3], margin = "features", method = "euclidean", use_na = TRUE)
     expect_equal(sum(is.na(cos2)), 1)
     expect_equal(sum(is.na(cor2)), 2)
-    expect_equal(sum(is.na(euc2)), 1)
+    expect_equal(sum(is.na(euc2)), 0)
 })
 
 test_that("no value is greater than 1.0 (#1543)", {

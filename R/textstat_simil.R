@@ -200,7 +200,7 @@ setMethod("tail", signature(x = "textstat_proxy"), function(x, n = 6L, ...) {
 #' @param ... unused
 #' @details `textstat_simil` options are: `"correlation"` (default),
 #'   `"cosine"`, `"jaccard"`, `"ejaccard"`, `"dice"`,
-#'   `"edice"`, `"simple matching"`, and `"hamman"`.
+#'   `"edice"`, `"simple matching"`, and `"hamann"`.
 #' @note If you want to compute similarity on a "normalized" dfm object
 #'   (controlling for variable document lengths, for methods such as correlation
 #'   for which different document lengths matter), then wrap the input dfm in
@@ -249,7 +249,7 @@ setMethod("tail", signature(x = "textstat_proxy"), function(x, n = 6L, ...) {
 textstat_simil <- function(x, y = NULL, selection = NULL,
                            margin = c("documents", "features"),
                            method = c("correlation", "cosine", "jaccard", "ejaccard",
-                                      "dice", "edice", "hamman", "simple matching"),
+                                      "dice", "edice", "hamann", "simple matching"),
                            min_simil = NULL, ...) {
     UseMethod("textstat_simil")
 }
@@ -258,7 +258,7 @@ textstat_simil <- function(x, y = NULL, selection = NULL,
 textstat_simil.default <- function(x, y = NULL, selection = NULL,
                                margin = c("documents", "features"),
                                method = c("correlation", "cosine", "jaccard", "ejaccard",
-                                          "dice", "edice", "hamman", "simple matching"),
+                                          "dice", "edice", "hamann", "simple matching"),
                                min_simil = NULL, ...) {
     stop(friendly_class_undefined_message(class(x), "textstat_simil"))
 }
@@ -267,7 +267,7 @@ textstat_simil.default <- function(x, y = NULL, selection = NULL,
 textstat_simil.dfm <- function(x, y = NULL, selection = NULL,
                                margin = c("documents", "features"),
                                method = c("correlation", "cosine", "jaccard", "ejaccard",
-                                          "dice", "edice", "hamman", "simple matching"),
+                                          "dice", "edice", "hamann", "simple matching"),
                                min_simil = NULL, ...) {
 
     if (!is.null(selection))
@@ -276,6 +276,8 @@ textstat_simil.dfm <- function(x, y = NULL, selection = NULL,
 
     x <- as.dfm(x)
     margin <- match.arg(margin)
+
+    method[method == "hamman"] <- "hamann" # trap older "hamman" spelling
     method <- match.arg(method)
 
     if (margin == "features") {
@@ -603,13 +605,12 @@ setMethod("as.matrix", "textstat_simil_symm_sparse",
 #' @param min_proxy the minimum proximity value to be recoded.
 #' @param rank an integer value specifying top-n most proximity values to be
 #'   recorded.
-#' @import proxyC
 #' @export
 #' @seealso [textstat_dist()], [textstat_simil()]
 textstat_proxy <- function(x, y = NULL,
                            margin = c("documents", "features"),
                            method = c("cosine", "correlation", "jaccard", "ejaccard",
-                                      "dice", "edice", "hamman", "simple matching",
+                                      "dice", "edice", "hamann", "simple matching",
                                       "euclidean", "chisquared", "hamming", "kullback",
                                       "manhattan", "maximum", "canberra", "minkowski"),
                            p = 2, min_proxy = NULL, rank = NULL, use_na = FALSE) {
@@ -623,6 +624,8 @@ textstat_proxy <- function(x, y = NULL,
     }
 
     margin <- match.arg(margin)
+
+    method[method == "hamman"] <- "hamann" # trap older "hamman" spelling
     method <- match.arg(method)
 
     if (margin == "documents") {
@@ -634,53 +637,24 @@ textstat_proxy <- function(x, y = NULL,
             stop("x and y must contain the same documents")
     }
     if (method %in% c("cosine", "correlation", "jaccard", "ejaccard", "dice", "edice",
-                      "hamman", "simple matching", "faith")) {
+                      "hamann", "simple matching", "faith")) {
         if (identical(x, y)) {
-            result <- simil(x, NULL, 2, method, min_simil = min_proxy, rank = rank)
+            suppressWarnings({
+                result <- proxyC::simil(x, NULL, 2, method, min_simil = min_proxy, rank = rank, use_nan = use_na)
+            })
         } else {
-            result <- simil(x, y, 2, method, min_simil = min_proxy, rank = rank)
+            suppressWarnings({
+                result <- proxyC::simil(x, y, 2, method, min_simil = min_proxy, rank = rank, use_nan = use_na)
+            })
         }
     } else {
         if (identical(x, y)) {
-            result <- dist(x, NULL, 2, method, p = p)
+            result <- proxyC::dist(x, NULL, 2, method, p = p)
         } else {
-            result <- dist(x, y, 2, method, p = p)
+            result <- proxyC::dist(x, y, 2, method, p = p)
         }
     }
     dimnames(result) <- list(colnames(x), colnames(y))
-    if (use_na) {
-        if (method == "correlation") {
-            na1 <- colSds(x) == 0
-            na2 <- colSds(y) == 0
-        } else {
-            na1 <- colZeros(x) == nrow(x)
-            na2 <- colZeros(y) == nrow(y)
-        }
-        if (any(na1) || any(na2))
-            result <- result + make_na_matrix(dim(result), which(na1), which(na2))
-    }
     return(result)
 }
 
-make_na_matrix <- function(dims, row = NULL, col = NULL) {
-    i <- j <- integer()
-    if (is.integer(row)) {
-        i <- c(i, rep(row, dims[2]))
-        j <- c(j, rep(seq_len(dims[2]), each = length(row)))
-    }
-    if (is.integer(col)) {
-        i <- c(i, rep(seq_len(dims[1]), each = length(col)))
-        j <- c(j, rep(col, dims[1]))
-    }
-    if (utils::packageVersion("Matrix") < 1.3) {
-        Matrix::sparseMatrix(
-            i = i, j = j, x = as.double(NA),
-            dims = dims,
-            giveCsparse = FALSE)
-    } else {
-        Matrix::sparseMatrix(
-            i = i, j = j, x = as.double(NA),
-            dims = dims,
-            repr = "T")
-    }
-}
