@@ -1,3 +1,8 @@
+# quanteda.textstats 0.96
+
+* Fixes for compatibility with Matrix >= 1.5. (#54)
+* Fixed how subsetting (`[`) works for textstat outputs, to fix #50.
+
 # quanteda.textstats 0.95
 
 * Updated `textstat_simil()` for new **proxyC** version v0.2.2, which affects how similarities are returned for `NA` values.  See #45.
