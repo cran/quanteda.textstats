@@ -1,5 +1,5 @@
 Package: quanteda.textstats
-Version: 0.96
+Version: 0.96.1
 Title: Textual Statistics for the Quantitative Analysis of Textual Data
 Description: Textual statistics functions formerly in the 'quanteda' package.
     Textual statistics for characterizing and comparing textual data. Includes 
@@ -17,8 +17,8 @@ Authors@R: c(
     )
 License: GPL-3
 Depends: R (>= 3.5.0)
-Imports: quanteda, Matrix, methods, nsyllable, proxyC (>= 0.1.4), Rcpp
-        (>= 0.12.12), RcppParallel, stringi
+Imports: quanteda, Matrix (>= 1.5-0), methods, nsyllable, proxyC (>=
+        0.1.4), Rcpp (>= 0.12.12), RcppParallel, stringi
 LinkingTo: Rcpp, RcppParallel, RcppArmadillo (>= 0.7.600.1.0), quanteda
 Suggests: entropy, ExPosition, proxy, rmarkdown, spelling, svs,
         testthat, knitr
@@ -27,10 +27,9 @@ Encoding: UTF-8
 BugReports: https://github.com/quanteda/quanteda.textstats/issues
 LazyData: TRUE
 Language: en-GB
-RoxygenNote: 7.2.1
-SystemRequirements: C++11
+RoxygenNote: 7.2.3
 NeedsCompilation: yes
-Packaged: 2022-09-19 13:13:13 UTC; kbenoit
+Packaged: 2023-03-08 12:40:00 UTC; kbenoit
 Author: Kenneth Benoit [cre, aut, cph]
     (<https://orcid.org/0000-0002-0797-564X>),
   Kohei Watanabe [aut] (<https://orcid.org/0000-0001-6519-5265>),
@@ -40,4 +39,4 @@ Author: Kenneth Benoit [cre, aut, cph]
   European Research Council [fnd] (ERC-2011-StG 283794-QUANTESS)
 Maintainer: Kenneth Benoit <kbenoit@lse.ac.uk>
 Repository: CRAN
-Date/Publication: 2022-09-19 13:36:10 UTC
+Date/Publication: 2023-03-08 13:50:02 UTC
