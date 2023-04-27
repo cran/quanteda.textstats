@@ -1,6 +1,6 @@
-c0a66d00aeb6c1451027ba721b6c8d6f *DESCRIPTION
+f2e0991996967e9be2c647c3d01e8f36 *DESCRIPTION
 b6d0f95e226fc9093975ca780aedac5a *NAMESPACE
-226425ee19bcbfcd50cf963cac7a4677 *NEWS.md
+194ee4ee485f284161eb23b676165a1d *NEWS.md
 f56744668db20d5889526e6a71790e88 *R/RcppExports.R
 44608ccc0ad0ed45cd8d287d983d6d31 *R/nscrabble.R
 104bf5bb2661e3994a58a2e728b2a486 *R/nsyllable-methods.R
@@ -15,11 +15,11 @@ fd01c9995a9a819e8a95aefc887ea8ce *R/textstat_entropy.R
 73f25f13fba31ba3769c3165f59c0b71 *R/textstat_simil.R
 4da027bba98678511833c71ef15118bf *R/textstat_summary.R
 54c0216958803a928c38ba9c8baa1ca4 *R/utils.R
-55d5ad0a58065cbbb3853c094b3c20ac *README.md
-ea124a494ad7922985532ad3b308e4d5 *build/partial.rdb
+098f9601aa9c1ccedd97412b213f5150 *README.md
+439bf689fa27cf9affd0335332142165 *build/partial.rdb
 49e116c6a2a98b84f6ea943d823e9530 *data/data_char_wordlists.rda
 56ed661886406468d3338329c6f4c2e0 *inst/CITATION
-e3b116d5fc529ce89443a08082c4df29 *inst/WORDLIST
+69aeb488e30bdd03cd28f60cc2d35c8b *inst/WORDLIST
 acec21514138c1292680d978ccc8a035 *man/as.list.textstat_proxy.Rd
 d270e871be44e0fee2e2ad997962072f *man/as.matrix.textstat_simil_sparse.Rd
 e7ed5838641e6ac2087a61def96b99e0 *man/check_dots.Rd
@@ -50,7 +50,7 @@ fa0c249e20e8a093356bfb35581563b3 *src/RcppExports.cpp
 12ccf42024b70bd29ffd651e32761864 *src/collocations_mt_.cpp
 3249c31fddf5392e5965836ebad53ae2 *src/dist_mt.cpp
 303f082655ce22dac14bc5d03f9d3fe3 *src/keyness_mt.cpp
-7b920c9304dfc90cbc1da1425d1d6dc7 *src/utility.cpp
+da03f42b99956b85e8e4560327663156 *src/utility.cpp
 835e6bd8d0bd2f6e6036ba11a424dfc4 *tests/data/stjohn_latin.csv
 1feda088772802cfa81bb2094147e0e7 *tests/spelling.R
 375f587c38b4fa031f7013454dc56d58 *tests/testthat.R
