@@ -1,4 +1,4 @@
-f2e0991996967e9be2c647c3d01e8f36 *DESCRIPTION
+6568d98f90a874506391030ae7bfc19e *DESCRIPTION
 b6d0f95e226fc9093975ca780aedac5a *NAMESPACE
 194ee4ee485f284161eb23b676165a1d *NEWS.md
 f56744668db20d5889526e6a71790e88 *R/RcppExports.R
@@ -10,13 +10,13 @@ f56744668db20d5889526e6a71790e88 *R/RcppExports.R
 fd01c9995a9a819e8a95aefc887ea8ce *R/textstat_entropy.R
 083eb8d42f874995495e9fea83f2c3f7 *R/textstat_frequency.R
 973408ed3e205a47e3b1b570a3a27aaf *R/textstat_keyness.R
-417b7cb8c2bddecb48d53c7677dab9c2 *R/textstat_lexdiv.R
+52fd57ca863ece62836dead43d27eaea *R/textstat_lexdiv.R
 4afd5ea86d8764d09bec2f99dd85cf8c *R/textstat_readability.R
 73f25f13fba31ba3769c3165f59c0b71 *R/textstat_simil.R
 4da027bba98678511833c71ef15118bf *R/textstat_summary.R
 54c0216958803a928c38ba9c8baa1ca4 *R/utils.R
 098f9601aa9c1ccedd97412b213f5150 *README.md
-439bf689fa27cf9affd0335332142165 *build/partial.rdb
+7080893e02c49cd296d4424b9be55069 *build/partial.rdb
 49e116c6a2a98b84f6ea943d823e9530 *data/data_char_wordlists.rda
 56ed661886406468d3338329c6f4c2e0 *inst/CITATION
 69aeb488e30bdd03cd28f60cc2d35c8b *inst/WORDLIST
@@ -25,7 +25,7 @@ d270e871be44e0fee2e2ad997962072f *man/as.matrix.textstat_simil_sparse.Rd
 e7ed5838641e6ac2087a61def96b99e0 *man/check_dots.Rd
 479bc452205401e6a8ef84e02d081dca *man/compute_lexdiv_stats.Rd
 ca6ed7dffaf641e5042e169a7c29756d *man/compute_mattr.Rd
-1364eb5452d7ba66232b883ff6f0252a *man/compute_msttr.Rd
+2a3aab5d14259dd77d2dc41ed0d5e9b4 *man/compute_msttr.Rd
 329db9501a4507e72d17e1a1a50a0f7f *man/data_char_wordlists.Rd
 9bbd0ef1a68f201657956a2b07cd1f46 *man/dfm_split_hyphenated_features.Rd
 70f146e78e0631594615f2df141d6cd9 *man/diag2na.Rd
@@ -68,4 +68,4 @@ d3c0e6cb10cba51058bed6fe8b2fc968 *tests/testthat/test-textstat_proxy.R
 e90f0770b21e382c43122e2e003437f7 *tests/testthat/test-textstat_readability.R
 71436d66b2363d04497f01810c761751 *tests/testthat/test-textstat_simil.R
 77bd238f2670ea1ef697179fd702641a *tests/testthat/test-textstat_summary.R
-876a8f162dca354161023feaf7f08344 *tests/testthat/test-utils.R
+aba45153e61849b99d88c7bd6ce0e44b *tests/testthat/test-utils.R

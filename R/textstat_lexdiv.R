@@ -435,7 +435,7 @@ compute_mattr <- function(x, MATTR_window = 100L) {
 #'
 #' Compute the Mean Segmental Type-Token Ratio (Johnson 1944) for a tokens input.
 #' @param x input [tokens]
-#' @param segment_size the size of the segment
+#' @inheritParams textstat_lexdiv
 #' @keywords internal textstat lexdiv
 compute_msttr <- function(x, MSTTR_segment) {
     if (MSTTR_segment < 1)
