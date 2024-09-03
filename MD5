@@ -1,6 +1,6 @@
-a198e5fa76a180871ffb0afd5a7964a6 *DESCRIPTION
+66f2e52763310dd7e10b76b5314da95d *DESCRIPTION
 ab5d62cae6e2786e21f27f507e8d20e3 *NAMESPACE
-4d726e0135baba175d6e47a8d00340c0 *NEWS.md
+b8dd97bf21319fd83064fed10993cc44 *NEWS.md
 fc19f9906bb69fa041f42cf805e46899 *R/RcppExports.R
 44608ccc0ad0ed45cd8d287d983d6d31 *R/nscrabble.R
 311490d99c73c8fc1f24d00021a82b04 *R/nsyllable-methods.R
@@ -15,7 +15,7 @@ fd01c9995a9a819e8a95aefc887ea8ce *R/textstat_entropy.R
 d8b1a03320c0b8d12679e62976de01d2 *R/textstat_simil.R
 04cb574bb7c12cc4d97bd0b99c2d0078 *R/textstat_summary.R
 88e1bfe6e330d5dfb8866267dcdb09c2 *R/utils.R
-c1016c00790bb179b4f7d89c2414c9c9 *README.md
+1912b9b0a9b6633d1eb19e08c8d72305 *README.md
 aa5e5a2cbfaea3d9b6cdbe378ac48cee *build/partial.rdb
 49e116c6a2a98b84f6ea943d823e9530 *data/data_char_wordlists.rda
 56ed661886406468d3338329c6f4c2e0 *inst/CITATION
@@ -51,7 +51,7 @@ d6fa46d0129272e975a770bdd05e6a53 *src/Makevars
 b255194d30b8cf40c9f8987fa595ca85 *src/Makevars.win
 b07dd48faac23bcc4a4d1d1f6e930c18 *src/RcppExports.cpp
 2f26a2bfd678c04effa92599414630cc *src/collocations.cpp
-ba1fcec550be38d5c3c76b046daf66db *src/keyness.cpp
+5338b0e69e7433eb0b888a6fec8ff5e6 *src/keyness.cpp
 835e6bd8d0bd2f6e6036ba11a424dfc4 *tests/data/stjohn_latin.csv
 1feda088772802cfa81bb2094147e0e7 *tests/spelling.R
 375f587c38b4fa031f7013454dc56d58 *tests/testthat.R
